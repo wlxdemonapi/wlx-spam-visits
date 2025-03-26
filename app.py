@@ -21,11 +21,18 @@ def load_tokens(region):
         elif region in {"BR", "US", "SAC", "NA"}:
             with open("token_br.json", "r") as f:
                 tokens = json.load(f)
+        elif region == "EU":
+            with open("token_eu.json", "r") as f:
+                tokens = json.load(f)
+        elif region == "VN":  # VN server add kiya
+            with open("token_vn.json", "r") as f:
+                tokens = json.load(f)
         else:
             with open("token_bd.json", "r") as f:
                 tokens = json.load(f)
         return tokens
-    except:
+    except Exception as e:
+        app.logger.error(f"Error loading tokens for server {region}: {e}")
         return None
 
 def encrypt_message(plaintext):
