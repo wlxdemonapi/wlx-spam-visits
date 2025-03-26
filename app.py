@@ -95,7 +95,7 @@ def decode_protobuf(binary):
     except:
         return None
 
-@app.route('/visit', methods=['GET'])
+@app.route('/demon_visits', methods=['GET'])
 async def visit():
     target_uid = request.args.get("uid")
     region = request.args.get("region", "").upper()
